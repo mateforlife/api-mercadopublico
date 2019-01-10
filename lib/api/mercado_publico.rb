@@ -1,24 +1,29 @@
 # frozen_string_literal: true
 
 module Api
-  module V1
-    # class to manage mercadopublico.cl API
-    class MercadoPublico
-      require HTTParty
+  # class to manage mercadopublico.cl API
+  class MercadoPublico
+    include HTTParty
 
-      base_uri 'http://api.mercadopublico.cl'
+    base_uri 'http://api.mercadopublico.cl'
 
-      def api_key
-        ENV['API_TICKET']
-      end
+    def initialize
+      @options = { query: { ticket: api_key } }
+    end
 
-      def base_path
-        '/servicios/v1/publico/'
-      end
+    def api_key
+      ENV['API_TICKET']
+    end
 
-      def purchase_orders(options = {})
-        puts options
-      end
+    def base_path
+      '/servicios/v1/publico/'
+    end
+
+    # to get purchase orders
+
+    def orders
+      url = "#{base_path}/ordenesdecompra.json"
+      self.class.get(url, @options)
     end
   end
 end
