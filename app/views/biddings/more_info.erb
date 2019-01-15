@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<div class="box box-info">
+  <div class="box-header with-border">
+    <h3 class="box-title" style="margin-bottom: 1em;">Licitaciones (total: <%= @biddings.count %>)</h3>
+      <div class="box-body">
+        <div class="table-responsive">
+          <table class="table no-margin text-center">
+            <thead>
+              <tr>
+                <th>Codigo Extrerno</th>
+                <th>Nombre</th>
+                <th>Codigo Estado</th>
+                <th>Descripcion</th>
+                <th>NombreUnidad</th>
+                <th>Monto Estimado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @biddings.each do |bidding| %>
+                <tr>
+                  <td><%= bidding['CodigoExterno'] %></td>
+                  <td><%= bidding['Nombre'] %></td>
+                  <td><%= bidding['CodigoEstado'] %></td>
+                  <td><%= bidding['Descripcion'] %></td>
+                  <td><%= bidding['NombreUnidad'] %></td>
+                  <td><%= bidding['MontoEstimado'] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div> 
