@@ -21,8 +21,4 @@ class BiddingsController < ApplicationController
   def set_market
     @market = Api::MercadoPublico.new
   end
-
-  def json_response(data)
-    JSON.parse(JSON[data], symbolize_names: true)
-  end
 end

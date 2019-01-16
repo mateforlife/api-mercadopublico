@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="box box-info">
   <div class="box-header with-border">
-    <h3 class="box-title" style="margin-bottom: 1em;">Licitaciones (total: <%= @biddings.count %>)</h3>
+    <h3 class="box-title" style="margin-bottom: 1em;">Licitaciones (total: <%= @biddings.count unless @biddings.nil? %>)</h3>
       <div class="box-body">
         <div class="table-responsive">
           <table class="table no-margin text-center">
@@ -20,7 +20,7 @@
                   <td><%= bidding[:CodigoExterno] %></td>
                   <td><%= bidding[:Nombre] %></td>
                   <td><%= bidding[:CodigoEstado] %></td>
-                  <td><%= bidding[:FechaCierre] %></td>
+                  <td><%= bidding[:FechaCierre].to_date.strftime('%d-%m-%Y') %></td>
                   <td class=""><%= link_to '', "/licitaciones/#{bidding[:CodigoExterno]}", method: :get, class: 'fa fa-eye' %></td>
                 </tr>
               <% end %>

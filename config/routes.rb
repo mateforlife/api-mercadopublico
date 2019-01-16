@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   get '/licitaciones', to: 'biddings#index'
   get '/licitaciones/:id', to: 'biddings#show'
   get '/licitaciones/more', to: 'biddings#more_info'
+
+  root to: 'biddings#index'
 end
