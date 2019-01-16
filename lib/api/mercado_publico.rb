@@ -56,7 +56,7 @@ module Api
       arr = []
       biddings = Api::MercadoPublico.new.biddings
       biddings.each do |bidding|
-        arr << bidding if I18n.transliterate(bidding['Nombre'].downcase).include?(key_words.to_s)
+        arr << bidding if key_words.any? { |word| I18n.transliterate(bidding['Nombre'].downcase).include?(word) }
       end
       arr
     end
