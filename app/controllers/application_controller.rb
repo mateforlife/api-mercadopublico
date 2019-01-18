@@ -5,5 +5,4 @@ class ApplicationController < ActionController::Base
   def json_response(data)
     JSON.parse(JSON[data], symbolize_names: true)
   end
-
 end

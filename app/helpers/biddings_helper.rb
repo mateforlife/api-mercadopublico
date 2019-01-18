@@ -13,4 +13,4 @@ module BiddingsHelper
       "<small class='label bg-red'>Suspendida</small>".html_safe
     end
   end
-end  
+end
