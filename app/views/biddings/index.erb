@@ -27,7 +27,7 @@
                 <tr>
                   <td><%= bidding[:CodigoExterno] %></td>
                   <td><%= bidding[:Nombre] %></td>
-                  <td><%= bidding[:CodigoEstado] %></td>
+                  <td><%= bidding_states(bidding[:CodigoEstado]) %></td>
                   <td><%= bidding[:FechaCierre].to_date.strftime('%d-%m-%Y') %></td>
                   <td class=""><%= link_to '', "/licitaciones/#{bidding[:CodigoExterno]}", method: :get, class: 'fa fa-eye' %></td>
                 </tr>
@@ -35,6 +35,7 @@
             </tbody>
           </table>
         </div>
+        <%= will_paginate @biddings, renderer: BootstrapPagination::Rails %>
       </div>
   </div>
 </div> 

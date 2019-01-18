@@ -28,28 +28,13 @@ module Api
     end
 
     def biddings
-      url = "#{base_path}/licitaciones.json?estado=publicada"
+      url = "#{base_path}/licitaciones.json?"
       self.class.get(url, @options)['Listado']
     end
 
     def bidding_detail(bidding_id)
       url = "#{base_path}/licitaciones.json?codigo=#{bidding_id}"
       self.class.get(url, @options)['Listado']
-    end
-
-    def bidding_states(state)
-      case state
-      when 5
-        "<small class='label bg-green'>Publicada</small>".html_safe
-      when 6
-        "<small class='label bg-red'>Cerrada</small>".html_safe
-      when 7
-        "<small class='label bg-red'>Desierta</small>".html_safe
-      when 18
-        "<small class='label bg-red'>Adjudicada</small>".html_safe
-      when 19
-        "<small class='label bg-red'>Suspendida</small>".html_safe
-      end
     end
 
     def select_biddings_with_key_words

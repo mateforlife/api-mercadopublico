@@ -11,7 +11,7 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Estado</b> <a class="pull-right"><%= Api::MercadoPublico.new.bidding_states(@bidding[:CodigoEstado]) %></a>
+                  <b>Estado</b> <a class="pull-right"><%= bidding_states(@bidding[:CodigoEstado]) %></a>
                 </li>
                 <li class="list-group-item">
                   <b>Monto Estimado</b> <a class="pull-right"><%= number_to_currency(@bidding[:MontoEstimado].to_i, unit: 'CLP$', delimiter: '.', precision: 0) %></a>
@@ -54,7 +54,7 @@
                 </li>
               </ul>
 
-              <a href="#" class="btn btn-primary btn-block"><b>Hacer Algo</b></a>
+              <a target="_blank" href="http://www.mercadopublico.cl/Portal/Modules/Menu/Menu.aspx" class="btn btn-primary btn-block"><b>Ir a Mercado Publico >> </b></a>
             </div>
             <!-- /.box-body -->
           </div>

@@ -2,11 +2,13 @@
 
 # class to manage biddings from mercadopublico API
 class BiddingsController < ApplicationController
+  require 'will_paginate/array'
   before_action :set_market, only: %i[index more_info show]
 
   def index
     biddings = json_response(@market.biddings)
-    @biddings = params[:term].blank? ? biddings : search(biddings)
+    @biddings = (params[:term].blank? ? biddings : search(biddings)).paginate(page: params[:page], per_page: 15)
+    # @biddings = render_data.paginate(page: params[:page], per_page: 15)
   end
 
   # def more_info
