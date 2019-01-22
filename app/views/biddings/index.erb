@@ -9,8 +9,8 @@
       <%= link_to 'Ver Palabras Clave', key_words_path, method: :get, class: '', style: 'color: blue;' %>
     </div>
 
-    <div class="col-md-7" style="position: absolute; margin-top: 55px; margin-left: 5%;">  
-      <%= form_tag(licitaciones_path, method: :get, style: 'display: flex') do %>
+    <div class="" style="float: unset;">  
+      <%= form_tag(licitaciones_path, method: :get, style: 'position: relative; margin-top: 3%; display: flex;') do %>
         <%= text_field_tag :term, '', { class: 'form-control',  style: 'width: 30%; margin-right: 10px;', placeholder: 'Escriba aquí el texto que desee buscar' } %>
         <%= submit_tag 'Buscar', { class: 'btn btn-primary', style: 'margin-right: 10px;' } %>
         <%= link_to 'Filtrar Palabras Clave', licitaciones_path(with_key_words: 1), method: :get, class: 'btn btn-primary pull-right', style: 'color: white;' %>
