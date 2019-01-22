@@ -7,8 +7,15 @@ class BiddingsController < ApplicationController
 
   def index
     biddings = json_response(@market.biddings)
-    @biddings = (params[:term].blank? ? biddings : search(biddings)).paginate(page: params[:page], per_page: 15)
-    # @biddings = render_data.paginate(page: params[:page], per_page: 15)
+    @biddings_count = biddings ? biddings.count : biddings
+    if params['with_key_words'] == '1'
+      result = json_response(@market.select_biddings_with_key_words)
+    elsif params[:term]
+      result = search(biddings)
+    else
+      result = biddings
+    end
+    @biddings = result.paginate(page: params[:page], per_page: 15)
   end
 
   # def more_info
@@ -19,6 +26,8 @@ class BiddingsController < ApplicationController
     @bidding = json_response(@market.bidding_detail(params[:id]))[0]
   end
 
+  private
+
   def search(biddings)
     arr = []
     biddings.each do |bidding|
@@ -26,8 +35,6 @@ class BiddingsController < ApplicationController
     end
     arr
   end
-
-  private
 
   def set_market
     @market = Api::MercadoPublico.new

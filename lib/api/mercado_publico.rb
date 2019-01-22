@@ -38,6 +38,7 @@ module Api
     end
 
     def select_biddings_with_key_words
+      sleep 2
       arr = []
       biddings = Api::MercadoPublico.new.biddings
       biddings.each do |bidding|
@@ -47,11 +48,7 @@ module Api
     end
 
     def key_words
-      ['educación', 'sistema de gestion', 'escolar', 'escuela',
-       'convivencia escolar', 'libro de clases', 'comunicaciones',
-       'sms', 'comunicacion', 'mensaje de texto', 'plataforma escolar',
-       'educacion', 'colegios', 'colegio', 'pedagogia', 'liceo',
-       'liceos']
+      KeyWord.all.pluck(:name)
     end
 
     def items
