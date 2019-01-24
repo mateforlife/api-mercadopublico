@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+  <h3>Licitaciones (total: <%= @biddings_count unless @biddings.nil? %>)</h3>
+  <div>  
+    <%= form_tag(market_biddings_path, method: :get, style: 'margin-left: 10px;', class:'') do %>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= text_field_tag :term, '', { class: 'mdl-textfield__input', placeholder: 'Escriba aquí el texto que desee buscar' } %>
+      </div>  
+        <%= submit_tag 'Buscar', { class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored', style: '' } %>
+    <% end %>
+  </div>
+  <div class="">
+      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Codigo Extrerno</th>
+            <th style="text-align: center;">Nombre</th>
+            <th style="text-align: center;">Codigo Estado</th>
+            <th>Fecha Cierre</th>
+            <th style="text-align: center;">Ver Detalle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @biddings.each do |bidding| %>
+            <tr style="text-align: center;">
+              <td><%= bidding[:CodigoExterno] %></td>
+              <td style="text-align: center;"><%= bidding[:Nombre] %></td>
+              <td style="text-align: center;"><%= bidding_states(bidding[:CodigoEstado]) %></td>
+              <td ><%= bidding[:FechaCierre].to_date.strftime('%d-%m-%Y') %></td>
+              <td style="text-align: center;"><%= link_to 'Ver', "market/biddings/#{bidding[:CodigoExterno]}", method: :get, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= will_paginate @biddings %>
+  </div>

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_21_153449) do
+ActiveRecord::Schema.define(version: 2019_01_24_170459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "biddings", force: :cascade do |t|
+    t.string "external_code"
+    t.string "name"
+    t.integer "state"
+    t.date "deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "key_words", force: :cascade do |t|
     t.string "name"

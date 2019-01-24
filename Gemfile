@@ -35,6 +35,7 @@ gem 'httparty'
 gem 'rubocop'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

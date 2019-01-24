@@ -28,7 +28,7 @@ module Api
     end
 
     def biddings
-      url = "#{base_path}/licitaciones.json?"
+      url = "#{base_path}/licitaciones.json"
       self.class.get(url, @options)['Listado']
     end
 

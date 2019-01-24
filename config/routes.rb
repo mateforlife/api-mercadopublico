@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   resources :key_words
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get '/licitaciones', to: 'biddings#index'
-  get '/licitaciones/:id', to: 'biddings#show'
-  get '/licitaciones/more', to: 'biddings#more_info'
+  namespace :market do
+    get '/biddings', to: 'biddings#index'
+    get '/biddings/:id', to: 'biddings#show'
+  end
 
-  root to: 'biddings#index'
+  resources :biddings
+  root to: 'market/biddings#index'
 end

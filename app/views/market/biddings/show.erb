@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 98%; margin-left: 10px;">
+  <div class="mdl-card__title">
+
+
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar">person</i>
+      <h2 class="mdl-card__title-text"><%= @bidding[:Comprador][:NombreOrganismo] %></h2>
+    </span>
+
+
+  </div>
+  <div class="mdl-card__supporting-text">
+    <%= @bidding[:Descripcion] %>
+  </div>
+ 
+    <ul class="list-group list-group-unbordered">
+      <li class="list-group-item">
+        <b>Estado</b> <a class="pull-right"><%= bidding_states(@bidding[:CodigoEstado]) %></a>
+      </li>
+      <li class="list-group-item">
+        <b>Monto Estimado</b> <a class="pull-right"><%= number_to_currency(@bidding[:MontoEstimado].to_i, unit: 'CLP$', delimiter: '.', precision: 0) %></a>
+      </li>
+      <li class="list-group-item">
+        <b>Fecha Cierre</b> <a class="pull-right"><%= @bidding[:Fechas][:FechaCierre].to_date.strftime('%d-%m-%Y') %> (<%= (@bidding[:Fechas][:FechaCierre].to_date - Date.today).to_i %> Días) </a>
+      </li>
+      <li class="list-group-item">
+        <b>Código Externo</b> <a class="pull-right"><%= @bidding[:CodigoExterno] %></a>
+      </li>
+      <li class="list-group-item">
+        <b>Nombre</b> <a class="pull-right"><%= @bidding[:Nombre] %></a>
+      </li>
+      <li class="list-group-item">
+        <b>Rut</b> <a class="pull-right"><%= @bidding[:Comprador][:RutUnidad] %></a>
+      </li>
+      <li class="list-group-item">
+        <b>Responsable de Pago</b> <a class="pull-right"><%= @bidding[:NombreResponsablePago] %> </a>
+      </li>
+      <li class="list-group-item">
+        <b>Mail Responsable de Pago</b> <a class="pull-right"><%= @bidding[:EmailResponsablePago] %> </a>
+      </li>
+      <li class="list-group-item">
+        <b>Responsable de Contrato</b> <a class="pull-right"><%= @bidding[:NombreResponsableContrato] %> </a>
+      </li>
+      <li class="list-group-item">
+        <b>Mail Responsable de Contrato</b> <a class="pull-right"><%= @bidding[:EmailResponsableContrato] %> </a>
+      </li>
+      <li class="list-group-item">
+        <b>Fono Responsable de Contrato</b> <a class="pull-right"><%= @bidding[:FonoResponsableContrato] %> </a>
+      </li>
+      <li class="list-group-item">
+        <b>Dirección</b> <a class="pull-right"><%= @bidding[:Comprador][:DireccionUnidad] %></a>
+      </li>
+      <li class="list-group-item">
+        <b>Comuna</b> <a class="pull-right"><%= @bidding[:Comprador][:ComunaUnidad] %></a>
+      </li>
+      <li class="list-group-item">
+        <b>Región</b> <a class="pull-right"><%= @bidding[:Comprador][:RegionUnidad] %></a>
+      </li>
+    </ul>
+
+  <div class="mdl-card__actions mdl-card--border">
+
+      <a target="_blank" href="http://www.mercadopublico.cl/Portal/Modules/Menu/Menu.aspx" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"><b>Ir a Mercado Publico >> </b></a>
+
+  </div>
+  <div class="mdl-card__menu">
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+      <i class="material-icons">add</i>
+    </button>
+  </div>
+</div>
+
