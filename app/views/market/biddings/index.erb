@@ -26,7 +26,7 @@
               <td style="text-align: center;"><%= bidding[:Nombre] %></td>
               <td style="text-align: center;"><%= bidding_states(bidding[:CodigoEstado]) %></td>
               <td ><%= bidding[:FechaCierre].to_date.strftime('%d-%m-%Y') %></td>
-              <td style="text-align: center;"><%= link_to 'Ver', "market/biddings/#{bidding[:CodigoExterno]}", method: :get, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %></td>
+              <td style="text-align: center;"><%= link_to 'Ver', market_path(id: bidding[:CodigoExterno]), method: :get, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %></td>
             </tr>
           <% end %>
         </tbody>

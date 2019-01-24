@@ -2,19 +2,13 @@
 
 <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 98%; margin-left: 10px;">
   <div class="mdl-card__title">
-
-
-    <span class="mdl-list__item-primary-content">
-      <i class="material-icons mdl-list__item-avatar">person</i>
-      <h2 class="mdl-card__title-text"><%= @bidding[:Comprador][:NombreOrganismo] %></h2>
-    </span>
-
-
+   <i class="material-icons mdl-list__item-avatar" style="margin-right: 5px;">person</i>
+    <h3 class="mdl-card__title-text" style="margin-bottom: 5px;"><%= @bidding[:Comprador][:NombreOrganismo] %></h3>
   </div>
   <div class="mdl-card__supporting-text">
     <%= @bidding[:Descripcion] %>
   </div>
- 
+
     <ul class="list-group list-group-unbordered">
       <li class="list-group-item">
         <b>Estado</b> <a class="pull-right"><%= bidding_states(@bidding[:CodigoEstado]) %></a>
@@ -61,9 +55,7 @@
     </ul>
 
   <div class="mdl-card__actions mdl-card--border">
-
-      <a target="_blank" href="http://www.mercadopublico.cl/Portal/Modules/Menu/Menu.aspx" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"><b>Ir a Mercado Publico >> </b></a>
-
+    <a target="_blank" href="http://www.mercadopublico.cl/Portal/Modules/Menu/Menu.aspx" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"><b>Ir a Mercado Publico >> </b></a>
   </div>
   <div class="mdl-card__menu">
     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">

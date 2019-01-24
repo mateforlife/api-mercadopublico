@@ -28,8 +28,8 @@ class KeyWordsController < ApplicationController
 
     respond_to do |format|
       if @key_word.save
-        format.html { redirect_to @key_word, notice: 'Key word was successfully created.' }
-        format.json { render :show, status: :created, location: @key_word }
+        format.html { redirect_to key_words_path, notice: 'Key word was successfully created.' }
+        format.json { render :index, status: :created, location: @key_word }
       else
         format.html { render :new }
         format.json { render json: @key_word.errors, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class KeyWordsController < ApplicationController
   def update
     respond_to do |format|
       if @key_word.update(key_word_params)
-        format.html { redirect_to @key_word, notice: 'Key word was successfully updated.' }
+        format.html { redirect_to key_words_path, notice: 'Key word was successfully updated.' }
         format.json { render :show, status: :ok, location: @key_word }
       else
         format.html { render :edit }
