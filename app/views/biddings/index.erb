@@ -1,4 +1,4 @@
-  <h3>Mis Licitaciones (total: <%= @biddings.count unless @biddings.nil? %>)</h3>
+  <h5 style="margin-left: 10px;">Mis Licitaciones (total: <%= @biddings.count unless @biddings.nil? %>)</h5>
   <div>  
     <%= form_tag(biddings_path, method: :get, style: 'margin-left: 10px;', class:'') do %>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

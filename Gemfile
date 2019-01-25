@@ -38,6 +38,8 @@ gem 'will_paginate-bootstrap'
 gem 'jquery-rails'
 gem 'snackbarjs-rails'
 gem 'toastrjs-rails'
+gem 'delayed_job_active_record'
+gem 'whenever', require: false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -12,9 +12,17 @@ class BiddingsController < ApplicationController
         format.html { redirect_to biddings_path, notice: 'Licitacion ha sido guardada.' }
         format.json { render :index, status: :created, location: @bidding }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @bidding.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @bidding.destroy
+    respond_to do |format|
+      format.html { redirect_to biddings_url, notice: 'Eliminada de mis licitaciones' }
+      format.json { head :no_content }
     end
   end
 

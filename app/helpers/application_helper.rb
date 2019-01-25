@@ -1,8 +1,8 @@
 module ApplicationHelper
+
   def add_button
     '<i class="material-icons">add</i>'.html_safe
   end
-
 
   def custom_bootstrap_flash
     flash_messages = []

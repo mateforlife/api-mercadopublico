@@ -17,7 +17,6 @@
 //= require toastr.min
 //= require_tree .
 
-
 toastr.options = {
   "closeButton": true,
   "debug": false,
