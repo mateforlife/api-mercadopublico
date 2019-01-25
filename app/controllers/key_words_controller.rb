@@ -62,13 +62,13 @@ class KeyWordsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_key_word
-      @key_word = KeyWord.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_key_word
+    @key_word = KeyWord.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def key_word_params
-      params.require(:key_word).permit(:name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def key_word_params
+    params.require(:key_word).permit(:name)
+  end
 end

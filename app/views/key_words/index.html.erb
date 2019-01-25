@@ -1,22 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<h3>Palabras Clave</h3>
-<div style="margin-bottom: 10px; margin-left: 10px;">
-  <%= link_to '<i class="material-icons">add</i>'.html_safe, new_key_word_path, class: 'mdl-button mdl-js-button mdl-button--fab mdl-button--colored', style: '' %>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--4-col"><h3>Palabras Clave</h3></div>
+  <div class="mdl-cell mdl-cell--4-col"></div>
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--2-col">
+    <div style="margin-top: 15px; text-align: -moz-right;">
+      <%= link_to add_button, new_key_word_path, class: 'mdl-button mdl-js-button mdl-button--fab mdl-button--colored', style: '' %>
+    </div>
+  </div>
 </div>
+
 <div class="">
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 100%;">
     <thead>
       <tr>
         <th>Nombre</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
       <% @key_words.each do |key_word| %>
         <tr style="text-align: center;">
           <td><%= key_word.name %></td>
-          <td><%= link_to 'Editar', edit_key_word_path(key_word), class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %></td>
-          <td><%= link_to 'Eliminar', key_word, method: :delete, data: { confirm: 'Are you sure?' }, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %></td>
+          <td><%= link_to 'Editar', edit_key_word_path(key_word), class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %>
+          <%= link_to 'Eliminar', key_word, method: :delete, data: { confirm: 'Are you sure?' }, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %></td>
         </tr>
       <% end %>
     </tbody>

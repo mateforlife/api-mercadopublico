@@ -12,6 +12,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css" /> 
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
   </head>
   <style>
     #view-source {
@@ -25,8 +26,10 @@
     }
   </style>
   <!-- Wide card with share menu button -->
+     <!-- Uses a transparent header that draws on top of the layout's background -->
 
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <%= flash_toastr %> 
     <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark" style="height: 60px;">
       <%= link_to 'Licitaciones del Mercado', market_biddings_path, class: 'mdl-layout__tab' %>
       <%= link_to 'Licitaciones guardadas', biddings_path, class: 'mdl-layout__tab' %>
@@ -35,6 +38,8 @@
     <body>
       <%= yield %>
     </body>  
-  </body>
+</body>
+
+
 
 </html>
