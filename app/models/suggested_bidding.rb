@@ -1,4 +1,5 @@
 class SuggestedBidding < ApplicationRecord
+  self.per_page = 151
 
   def self.rescue_suggested_biddings
     market = Api::MercadoPublico.new

@@ -1,0 +1,2 @@
+module SuggestedBiddingsHelper
+end

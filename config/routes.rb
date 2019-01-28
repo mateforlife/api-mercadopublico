@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   end
 
   resources :biddings
+  resources :suggested_biddings
   root to: 'market/biddings#index'
 end

@@ -32,6 +32,7 @@
     <%= flash_toastr %> 
     <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark" style="height: 60px;">
       <%= link_to 'Licitaciones del Mercado', market_biddings_path, class: 'mdl-layout__tab' %>
+      <%= link_to 'Licitaciones Sugeridas', suggested_biddings_path, method: :get, class: 'mdl-layout__tab'%>
       <%= link_to 'Licitaciones guardadas', biddings_path, class: 'mdl-layout__tab' %>
       <%= link_to 'Palabras Clave', key_words_path, method: :get, class: 'mdl-layout__tab'%>
     </div>
