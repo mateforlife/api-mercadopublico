@@ -1,42 +1,38 @@
-# frozen_string_literal: true
-
-# class to manage biddings from mercadopublico API
 class BiddingsController < ApplicationController
-  require 'will_paginate/array'
-  before_action :set_market, only: %i[index more_info show]
+  before_action :set_bidding, only: [:show, :edit, :update, :destroy]
 
   def index
-    biddings = json_response(@market.biddings)
-    @biddings_count = biddings ? biddings.count : biddings
-    if params['with_key_words'] == '1'
-      result = json_response(@market.select_biddings_with_key_words)
-    elsif params[:term]
-      result = search(biddings)
-    else
-      result = biddings
-    end
-    @biddings = result.paginate(page: params[:page], per_page: 15)
+    @biddings = Bidding.all
   end
 
-  # def more_info
-  #   @biddings = @market.process_biddings
-  # end
+  def create
+    @bidding = Bidding.new(bidding_params)
+    respond_to do |format|
+      if @bidding.save
+        format.html { redirect_to biddings_path, notice: 'Licitacion ha sido guardada.' }
+        format.json { render :index, status: :created, location: @bidding }
+      else
+        format.html { render :index }
+        format.json { render json: @bidding.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-  def show
-    @bidding = json_response(@market.bidding_detail(params[:id]))[0]
+  def destroy
+    @bidding.destroy
+    respond_to do |format|
+      format.html { redirect_to biddings_url, notice: 'Eliminada de mis licitaciones' }
+      format.json { head :no_content }
+    end
   end
 
   private
 
-  def search(biddings)
-    arr = []
-    biddings.each do |bidding|
-      arr << bidding if I18n.transliterate(bidding[:Nombre].downcase).include?(params[:term].downcase)
-    end
-    arr
+  def set_bidding
+    @bidding = Bidding.find(params[:id])
   end
 
-  def set_market
-    @market = Api::MercadoPublico.new
+  def bidding_params
+    params.require(:bidding).permit(:external_code, :name, :deadline, :state)
   end
 end

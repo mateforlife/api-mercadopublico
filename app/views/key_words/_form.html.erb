@@ -2,7 +2,6 @@
   <% if key_word.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(key_word.errors.count, "error") %> prohibited this key_word from being saved:</h2>
-
       <ul>
       <% key_word.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,12 +10,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name, 'Nombre' %>
-    <%= form.text_field :name, class: 'form-control', style: 'width: 50%;'%>
+  <div class="mdl-textfield mdl-js-textfield">
+    <%= form.label :name, 'Nombre', class: 'mdl-textfield__labe' %>
+    <%= form.text_field :name, class: 'mdl-textfield__input', style: '' %>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Ingresar', class: 'btn btn-primary' %>
+    <%= form.submit 'Ingresar', class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %>
   </div>
 <% end %>
+

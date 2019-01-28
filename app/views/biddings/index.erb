@@ -1,48 +1,35 @@
-<p id="notice"><%= notice %></p>
-<div class="box box-info">
-  <div class="box-header with-border">
-    <div class="col-md-3" style="text-align: center; margin-bottom: 30px">
-      <h3 class="" style="margin-bottom: 1em;">Licitaciones (total: <%= @biddings_count unless @biddings.nil? %>)</h3>
-    </div>
-
-    <div class="col-md-3" style="margin-top: 23px;">
-      <%= link_to 'Ver Palabras Clave', key_words_path, method: :get, class: '', style: 'color: blue;' %>
-    </div>
-
-    <div class="" style="float: unset;">  
-      <%= form_tag(licitaciones_path, method: :get, style: 'position: relative; margin-top: 3%; display: flex;') do %>
-        <%= text_field_tag :term, '', { class: 'form-control',  style: 'width: 30%; margin-right: 10px;', placeholder: 'Escriba aquí el texto que desee buscar' } %>
-        <%= submit_tag 'Buscar', { class: 'btn btn-primary', style: 'margin-right: 10px;' } %>
-        <%= link_to 'Filtrar Palabras Clave', licitaciones_path(with_key_words: 1), method: :get, class: 'btn btn-primary pull-right', style: 'color: white;' %>
-      <% end %>
-    </div>
-
-    <div class="box-body">
-      <div class="table-responsive">
-        <table class="table no-margin text-center">
-          <thead>
-            <tr>
-              <th>Codigo Extrerno</th>
-              <th>Nombre</th>
-              <th>Codigo Estado</th>
-              <th>Fecha Cierre</th>
-              <th>Ver Detalle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @biddings.each do |bidding| %>
-              <tr>
-                <td><%= bidding[:CodigoExterno] %></td>
-                <td><%= bidding[:Nombre] %></td>
-                <td><%= bidding_states(bidding[:CodigoEstado]) %></td>
-                <td><%= bidding[:FechaCierre].to_date.strftime('%d-%m-%Y') %></td>
-                <td><%= link_to '', "/licitaciones/#{bidding[:CodigoExterno]}", method: :get, class: 'fa fa-eye' %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-      <%= will_paginate @biddings, renderer: BootstrapPagination::Rails %>
-    </div>
+  <h5 style="margin-left: 10px;">Mis Licitaciones (total: <%= @biddings.count unless @biddings.nil? %>)</h5>
+  <div>  
+    <%= form_tag(biddings_path, method: :get, style: 'margin-left: 10px;', class:'') do %>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= text_field_tag :term, '', { class: 'mdl-textfield__input', placeholder: 'Escriba aquí el texto que desee buscar' } %>
+      </div>  
+        <%= submit_tag 'Buscar', { class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored', style: '' } %>
+    <% end %>
   </div>
-</div> 
+  <div class="">
+      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Codigo Extrerno</th>
+            <th style="text-align: center;">Nombre</th>
+            <th style="text-align: center;">Codigo Estado</th>
+            <th>Fecha Cierre</th>
+            <th style="text-align: center;">Ver Detalle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @biddings.each do |bidding| %>
+            <tr style="text-align: center;">
+              <td><%= bidding.external_code %></td>
+              <td style="text-align: center;"><%= bidding.name%></td>
+              <td style="text-align: center;"><%= bidding_states(bidding.state) %></td>
+              <td ><%= bidding.deadline %></td>
+              <td style="text-align: center;"><%= link_to 'Ver', market_path(id: bidding.external_code), method: :get, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>

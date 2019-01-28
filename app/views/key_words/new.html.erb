@@ -1,5 +1,10 @@
-<h1>Nueva Palabra Clave</h1>
 
-<%= render 'form', key_word: @key_word %>
-
-<%= link_to 'Atrás', key_words_path %>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 50%; margin-left: 10px;">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Nueva Palabra Clave</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    <%= render 'form', key_word: @key_word %>
+  </div>
+  <%= link_to '<< Atrás', key_words_path, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %>
+</div>

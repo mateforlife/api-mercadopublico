@@ -1,37 +1,32 @@
-<p id="notice"><%= notice %></p>
-<div class="box box-info">
-  <div class="box-header with-border">
-    <div class="col-md-3" style="">
-      <h1>Palabras Clave</h1>
-      <%= link_to '<< Volver', licitaciones_path %>
-      <div><br>
-      <%= link_to 'Nueva Palabra Clave', new_key_word_path, class: 'btn btn-primary', style: 'color: white;' %>
-      </div>
-      <div class="box-body">
-        <div class="table-responsive">
-          <table class="table no-margin text-center">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% @key_words.each do |key_word| %>
-                <tr>
-                  <td><%= key_word.name %></td>
-                  <td><%= link_to 'Editar', edit_key_word_path(key_word) %></td>
-                  <td><%= link_to 'Eliminar', key_word, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--4-col"><h5 style="margin-left: 10px;">Palabras Clave</h5></div>
+  <div class="mdl-cell mdl-cell--4-col"></div>
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--2-col">
+    <div style="margin-top: 15px; text-align: -moz-right;">
+      <%= link_to add_button, new_key_word_path, class: 'mdl-button mdl-js-button mdl-button--fab mdl-button--colored', style: '' %>
     </div>
   </div>
 </div>
-<br>
 
+<div class="">
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 100%;">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @key_words.each do |key_word| %>
+        <tr style="text-align: center;">
+          <td><%= key_word.name %></td>
+          <td><%= link_to 'Editar', edit_key_word_path(key_word), class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %>
+          <%= link_to 'Eliminar', key_word, method: :delete, data: { confirm: 'Are you sure?' }, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
