@@ -23,8 +23,8 @@
 
 # env :PATH, ENV['PATH']
 
-# set :output, "/log/cron_log_#{ENV['RAILS_ENV']}.log"
-
-# every 1.day, at: '5:37 pm' do
-#   runner "SuggestedBidding.rescue_suggested_biddings"
-# end
+ENV['RAILS_ENV'] = 'development'
+set :output, "/log/cron_log_#{ENV['RAILS_ENV']}.log"
+every 1.day, at: '3:25 pm' do
+  rake 'biddings:save_suggested'
+end
