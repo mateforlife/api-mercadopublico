@@ -4,6 +4,10 @@ module ApplicationHelper
     '<i class="material-icons">add</i>'.html_safe
   end
 
+  def delete_button
+    '<i class="material-icons">delete</i>'.html_safe
+  end
+
   def custom_bootstrap_flash
     flash_messages = []
     flash.each do |type, message|

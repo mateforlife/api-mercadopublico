@@ -57,10 +57,8 @@
   </div>
 
   <div class="mdl-card__menu">
-    <% if saved?(@bidding) %>
-      <button class="mdl-button mdl-js-button mdl-button--fab" disabled>
-         <i class="material-icons">add</i>
-      </button>
+    <% if find_bidding(@bidding).present? %>
+       <%= link_to delete_button, find_bidding(@bidding), data: { confirm: 'Deseas eliminar de Tus Licitaciones?' }, method: :delete, class: 'mdl-button mdl-js-button mdl-button--fab mdl-button--colored'%>
     <% else %>
       <%= link_to add_button, biddings_path(bidding: {external_code: @bidding[:CodigoExterno], name: @bidding[:Nombre], deadline: @bidding[:Fechas][:FechaCierre].to_date, state: @bidding[:CodigoEstado]}), method: :post, class: 'mdl-button mdl-js-button mdl-button--fab mdl-button--colored'%>
     <% end %>
