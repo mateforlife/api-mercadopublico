@@ -2,7 +2,9 @@ class BiddingsController < ApplicationController
   before_action :set_bidding, only: [:show, :edit, :update, :destroy]
 
   def index
-    @biddings = Bidding.all
+    biddings = Bidding.all
+    result = params[:term].present? ? Bidding.search(params[:term]) : biddings
+    @biddings = result.paginate(page: params[:page], per_page: 15)
   end
 
   def create

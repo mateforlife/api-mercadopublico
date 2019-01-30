@@ -1,13 +1,14 @@
   <h5 style="margin-left: 10px;">Licitaciones del Mercado(total: <%= @biddings_count unless @biddings.nil? %>)</h5>
   <div>  
     <%= form_tag(market_biddings_path, method: :get, style: 'margin-left: 10px; display: flex;', class:'') do %>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <%= text_field_tag :term, '', { class: 'mdl-textfield__input', placeholder: 'Escriba aquí el texto que desee buscar' } %>
+      <div id="date_container" class="mdl-textfield mdl-js-textfield">
+        <%= text_field_tag :term, '', { class: 'mdl-textfield__input', placeholder: 'Escriba texto para buscar...' } %>
+        <label class="mdl-textfield__label"></label>
       </div>  
         <%= submit_tag 'Buscar', { class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored', style: 'margin: 12px;' } %>
         <div class=""><%= link_to 'Filtrar por palabras plave', market_biddings_path(with_key_words: 1), method: :get, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored', style: 'margin: 12px;' %></div>
     <% end %>
-    
+
   </div>
   <div class="">
       <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 100%;">

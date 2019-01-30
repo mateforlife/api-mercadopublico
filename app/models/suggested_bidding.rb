@@ -10,4 +10,8 @@ class SuggestedBidding < ApplicationRecord
       SuggestedBidding.create(data: bidding)
     end
   end
+
+  def self.search(param)
+    SuggestedBidding.where("lower(data ->> 'Nombre') LIKE ?", "%#{param.downcase}%")
+  end
 end

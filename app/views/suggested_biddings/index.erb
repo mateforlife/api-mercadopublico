@@ -1,8 +1,9 @@
   <h5 style="margin-left: 10px;">Licitaciones Sugeridas(total: <%= @suggested_biddings.count unless @suggested_biddings.nil? %>)</h5>
   <div>  
-    <%= form_tag(market_biddings_path, method: :get, style: 'margin-left: 10px; display: flex;', class:'') do %>
+    <%= form_tag(suggested_biddings_path, method: :get, style: 'margin-left: 10px; display: flex;', class:'') do %>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <%= text_field_tag :term, '', { class: 'mdl-textfield__input', placeholder: 'Escriba aquí el texto que desee buscar' } %>
+        <label class="mdl-textfield__label"></label>
       </div>  
         <%= submit_tag 'Buscar', { class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored', style: 'margin: 12px;' } %>
     <% end %>

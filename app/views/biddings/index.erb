@@ -3,6 +3,7 @@
     <%= form_tag(biddings_path, method: :get, style: 'margin-left: 10px;', class:'') do %>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <%= text_field_tag :term, '', { class: 'mdl-textfield__input', placeholder: 'Escriba aquí el texto que desee buscar' } %>
+        <label class="mdl-textfield__label"></label>
       </div>  
         <%= submit_tag 'Buscar', { class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored', style: '' } %>
     <% end %>

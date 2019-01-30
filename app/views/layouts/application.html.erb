@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ApiMercadopublicoCl</title>
+    <title>Gestion de Licitaciones</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -30,17 +30,34 @@
 
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
     <%= flash_toastr %> 
-    <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark" style="height: 60px;">
-      <%= link_to 'Licitaciones del Mercado', market_biddings_path, class: 'mdl-layout__tab' %>
-      <%= link_to 'Licitaciones Sugeridas', suggested_biddings_path, method: :get, class: 'mdl-layout__tab'%>
-      <%= link_to 'Licitaciones guardadas', biddings_path, class: 'mdl-layout__tab' %>
-      <%= link_to 'Palabras Clave', key_words_path, method: :get, class: 'mdl-layout__tab'%>
+
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title"></span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Menu</span>
+        <nav class="mdl-navigation">
+          <%= link_to 'Licitaciones del Mercado', market_biddings_path, class: 'mdl-navigation__link' %>
+          <%= link_to 'Licitaciones Sugeridas', suggested_biddings_path, method: :get, class: 'mdl-navigation__link'%>
+          <%= link_to 'Licitaciones guardadas', biddings_path, class: 'mdl-navigation__link' %>
+          <%= link_to 'Palabras Clave', key_words_path, method: :get, class: 'mdl-navigation__link'%>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          <%= yield %>
+        </div>
+      </main>
     </div>
-    <body>
-      <%= yield %>
-    </body>  
-</body>
-
-
-
+  </body>
 </html>

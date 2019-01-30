@@ -1,7 +1,9 @@
 class SuggestedBiddingsController < ApplicationController
 
   def index
-    @suggested_biddings = SuggestedBidding.all.latest.paginate(page: params[:page], per_page: 15)
+    biddings = SuggestedBidding.all.latest
+    result = params[:term].present? ? SuggestedBidding.search(params[:term]) : biddings
+    @suggested_biddings = result.paginate(page: params[:page], per_page: 15)
   end
 
   def show

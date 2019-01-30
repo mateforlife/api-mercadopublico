@@ -13,7 +13,6 @@
 //= require rails-ujs
 //= require jquery
 //= require activestorage
-//= require turbolinks
 //= require toastr.min
 //= require_tree .
 
@@ -31,3 +30,4 @@ toastr.options = {
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
 };
+
