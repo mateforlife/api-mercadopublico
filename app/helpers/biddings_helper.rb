@@ -1,5 +1,5 @@
 module BiddingsHelper
-  
+
   def bidding_states(state)
     case state
     when 5
@@ -18,4 +18,9 @@ module BiddingsHelper
   def saved?(bidding)
     Bidding.find_by(external_code: bidding[:CodigoExterno])
   end
+
+  def find_bidding(bidding)
+    Bidding.find_by(external_code: bidding[:CodigoExterno])
+  end
+
 end
