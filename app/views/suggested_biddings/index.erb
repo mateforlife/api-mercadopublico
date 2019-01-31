@@ -25,7 +25,7 @@
           <% @suggested_biddings.each do |bidding| %>
             <tr style="text-align: center;">
               <td><%= bidding.data['CodigoExterno'] %></td>
-              <td style="text-align: center;"><%= bidding.data['Nombre'] %></td>
+              <td style="text-align: center;"><%= truncate_bidding_name(bidding.data['Nombre']) %></td>
               <td style="text-align: center;"><%= bidding_states(bidding.data['CodigoEstado']) %></td>
               <td><%= bidding.data['FechaCierre'].to_date.strftime('%d-%m-%Y') %></td>
               <td><%= bidding.created_at.strftime('%d-%m-%Y') %></td>

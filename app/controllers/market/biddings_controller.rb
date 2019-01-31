@@ -5,17 +5,19 @@ module Market
   class BiddingsController < ApplicationController
     require 'will_paginate/array'
     before_action :set_market, only: %i[index more_info show]
+    before_action :set_biddings, only: :index
 
     def index
-      biddings = json_response(@market.biddings)
-      @biddings_count = biddings ? biddings.count : biddings
-      if params['with_key_words'] == '1'
+      if params[:date].present?
+        result = json_response(@market.biddings_by_date(params[:date].to_date.strftime('%d%m%Y')))
+      elsif params['with_key_words'] == '1'
         result = json_response(@market.select_biddings_with_key_words)
       elsif params[:term]
-        result = search(biddings)
+        result = search_by_text(@biddings)
       else
-        result = biddings
+        result = @biddings
       end
+      @biddings_count = result.count
       @biddings = result.paginate(page: params[:page], per_page: 15)
     end
 
@@ -25,12 +27,16 @@ module Market
 
     private
 
-    def search(biddings)
+    def search_by_text(biddings)
       arr = []
       biddings.each do |bidding|
         arr << bidding if I18n.transliterate(bidding[:Nombre].downcase).include?(params[:term].downcase)
       end
       arr
+    end
+
+    def set_biddings
+      @biddings = json_response(@market.biddings)
     end
 
     def set_market

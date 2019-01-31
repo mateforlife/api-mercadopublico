@@ -8,6 +8,10 @@ module ApplicationHelper
     '<i class="material-icons">delete</i>'.html_safe
   end
 
+  def truncate_bidding_name(text)
+    text.truncate(80)
+  end
+
   def custom_bootstrap_flash
     flash_messages = []
     flash.each do |type, message|

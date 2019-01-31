@@ -23,7 +23,7 @@
           <% @biddings.each do |bidding| %>
             <tr style="text-align: center;">
               <td><%= bidding.external_code %></td>
-              <td style="text-align: center;"><%= bidding.name%></td>
+              <td style="text-align: center;"><%= truncate_bidding_name(bidding.name)%></td>
               <td style="text-align: center;"><%= bidding_states(bidding.state) %></td>
               <td ><%= bidding.deadline %></td>
               <td style="text-align: center;"><%= link_to 'Ver', market_path(id: bidding.external_code), method: :get, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %></td>

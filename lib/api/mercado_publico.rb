@@ -33,6 +33,12 @@ module Api
       self.class.get(url, @options)['Listado']
     end
 
+    def biddings_by_date(date)
+      sleep 2
+      url = "#{base_path}/licitaciones.json?fecha=#{date}"
+      self.class.get(url, @options)['Listado']
+    end
+
     def bidding_detail(bidding_id)
       sleep 2
       url = "#{base_path}/licitaciones.json?codigo=#{bidding_id}"
