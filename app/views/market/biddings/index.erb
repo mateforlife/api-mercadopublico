@@ -7,12 +7,11 @@
         <label class="mdl-textfield__label"></label>
       </div>
       <div id="date_container" class="mdl-textfield mdl-js-textfield" style="margin-left: 10px;">
-        <%= date_field_tag :date, '', { class: 'mdl-textfield__input', placeholder: 'fecha'} %>
+        <%= date_field_tag :date, @date, { class: 'mdl-textfield__input', placeholder: 'fecha'} %>
         <label class="mdl-textfield__label"></label>
       </div>
       <%= submit_tag 'Buscar', { class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored', style: 'margin: 12px;' } %>
       <div class="">
-        <%= link_to 'Filtrar por palabras plave', market_biddings_path(with_key_words: 1), method: :get, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored', style: 'margin: 12px;' %>
       </div>
     <% end %>
 

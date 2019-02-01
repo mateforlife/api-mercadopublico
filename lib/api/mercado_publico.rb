@@ -39,16 +39,23 @@ module Api
       self.class.get(url, @options)['Listado']
     end
 
+    def search_by_text(biddings, term)
+      arr = []
+      biddings.each do |bidding|
+        arr << bidding if I18n.transliterate(bidding['Nombre'].downcase).include?(term.downcase)
+      end
+      arr
+    end
+
     def bidding_detail(bidding_id)
       sleep 2
       url = "#{base_path}/licitaciones.json?codigo=#{bidding_id}"
       self.class.get(url, @options)['Listado']
     end
 
-    def select_biddings_with_key_words
+    def select_biddings_with_key_words(biddings = Api::MercadoPublico.new.biddings)
       sleep 2
       arr = []
-      biddings = Api::MercadoPublico.new.biddings
       biddings.each do |bidding|
         arr << bidding if key_words.any? { |word| I18n.transliterate(bidding['Nombre'].downcase).include?(word) }
       end

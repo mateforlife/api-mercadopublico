@@ -5,17 +5,18 @@ module Market
   class BiddingsController < ApplicationController
     require 'will_paginate/array'
     before_action :set_market, only: %i[index more_info show]
-    before_action :set_biddings, only: :index
+    before_action :set_date, only: :index
 
     def index
-      if params[:date].present?
-        result = json_response(@market.biddings_by_date(params[:date].to_date.strftime('%d%m%Y')))
-      elsif params['with_key_words'] == '1'
+      if params[:date].blank? && params[:term].blank?
         result = json_response(@market.select_biddings_with_key_words)
-      elsif params[:term]
-        result = search_by_text(@biddings)
-      else
-        result = @biddings
+      elsif params[:date].present? && params[:term].blank?
+        result = json_response(@market.select_biddings_with_key_words(@market.biddings_by_date(params[:date].to_date.strftime('%d%m%Y'))))
+      elsif params[:date].present? && params[:term].present?
+        # debo hacer que la fecha no quede blanca despues de seleccionarla
+        result = json_response(@market.search_by_text(@market.biddings_by_date(params[:date].to_date.strftime('%d%m%Y')), params[:term]))
+      elsif params[:date].blank? && params[:term].present?
+        result = json_response(@market.search_by_text(@market.select_biddings_with_key_words, params[:term]))
       end
       @biddings_count = result.count
       @biddings = result.paginate(page: params[:page], per_page: 15)
@@ -35,8 +36,13 @@ module Market
       arr
     end
 
+    def set_date
+      date = params[:date]
+      @date = date.present? ? date : Date.today
+    end
+    
     def set_biddings
-      @biddings = json_response(@market.biddings)
+      @biddings = json_response(@market.select_biddings_with_key_words)
     end
 
     def set_market
