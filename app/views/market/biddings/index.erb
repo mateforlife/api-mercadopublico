@@ -1,44 +1,44 @@
-  <h5 style="margin-left: 10px;">Licitaciones del Mercado(total: <%= @biddings_count unless @biddings.nil? %>)</h5>
-  <div>
+<h5 style="margin-left: 10px;">Licitaciones del Mercado(total: <%= @biddings_count unless @biddings.nil? %>)</h5>
+<div>
 
-    <%= form_tag(market_biddings_path, method: :get, style: 'margin-left: 10px; display: flex;', class:'') do %>
-      <div id="date_container" class="mdl-textfield mdl-js-textfield">
-        <%= text_field_tag :term, '', { class: 'mdl-textfield__input', placeholder: 'Escriba texto para buscar...' } %>
-        <label class="mdl-textfield__label"></label>
-      </div>
-      <div id="date_container" class="mdl-textfield mdl-js-textfield" style="margin-left: 10px;">
-        <%= date_field_tag :date, @date, { class: 'mdl-textfield__input', placeholder: 'fecha'} %>
-        <label class="mdl-textfield__label"></label>
-      </div>
-      <%= submit_tag 'Buscar', { class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored', style: 'margin: 12px;' } %>
-      <div class="">
-      </div>
-    <% end %>
-
-  </div>
-  <div class="">
-      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 100%;">
-        <thead>
-          <tr>
-            <th>Codigo Extrerno</th>
-            <th style="text-align: center;">Nombre</th>
-            <th style="text-align: center;">Codigo Estado</th>
-            <th>Fecha Cierre</th>
-            <th style="text-align: center;">Ver Detalle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @biddings.each do |bidding| %>
-            <tr style="text-align: center;">
-              <td><%= bidding[:CodigoExterno] %></td>
-              <td style="text-align: center;"><%= truncate_bidding_name(bidding[:Nombre]) %></td>
-              <td style="text-align: center;"><%= bidding_states(bidding[:CodigoEstado]) %></td>
-              <td ><%= bidding[:FechaCierre].to_date.strftime('%d-%m-%Y') %></td>
-              <td style="text-align: center;"><%= link_to 'Ver', market_path(id: bidding[:CodigoExterno]), method: :get, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+  <%= form_tag(market_biddings_path, method: :get, style: 'margin-left: 10px; display: flex;', class:'') do %>
+    <div id="date_container" class="mdl-textfield mdl-js-textfield">
+      <%= text_field_tag :term, '', { class: 'mdl-textfield__input', placeholder: 'Escriba texto para buscar...' } %>
+      <label class="mdl-textfield__label"></label>
     </div>
-    <%= will_paginate @biddings, renderer: BootstrapPagination::Rails %>
+    <div id="date_container" class="mdl-textfield mdl-js-textfield" style="margin-left: 10px;">
+      <%= date_field_tag :date, @date, { class: 'mdl-textfield__input', placeholder: 'fecha'} %>
+      <label class="mdl-textfield__label"></label>
+    </div>
+    <%= submit_tag 'Buscar', { class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored', style: 'margin: 12px;' } %>
+    <div class="">
+    </div>
+  <% end %>
+
+</div>
+<div class="">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Codigo Extrerno</th>
+          <th style="text-align: center;">Nombre</th>
+          <th style="text-align: center;">Codigo Estado</th>
+          <th>Fecha Cierre</th>
+          <th style="text-align: center;">Ver Detalle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @biddings.each do |bidding| %>
+          <tr style="text-align: center;">
+            <td><%= bidding[:CodigoExterno] %></td>
+            <td style="text-align: center;"><%= truncate_bidding_name(bidding[:Nombre]) %></td>
+            <td style="text-align: center;"><%= bidding_states(bidding[:CodigoEstado]) %></td>
+            <td ><%= bidding[:FechaCierre].to_date.strftime('%d-%m-%Y') %></td>
+            <td style="text-align: center;"><%= link_to 'Ver', market_path(id: bidding[:CodigoExterno]), method: :get, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
+  <%= will_paginate @biddings, renderer: BootstrapPagination::Rails %>
+</div>
