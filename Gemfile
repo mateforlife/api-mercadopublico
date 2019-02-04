@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bootstrap-datepicker-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
+gem 'omniauth-google-oauth2'
+# gem 'devise'
 gem 'figaro'
 gem 'adminlte-rails'
 gem 'httparty'

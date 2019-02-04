@@ -4,6 +4,7 @@ module Market
   # class to manage biddings from mercadopublico API
   class BiddingsController < ApplicationController
     require 'will_paginate/array'
+    before_action :authenticate
     before_action :set_market, only: %i[index more_info show]
     before_action :set_date, only: :index
 
@@ -40,7 +41,7 @@ module Market
       date = params[:date]
       @date = date.present? ? date : Date.today
     end
-    
+
     def set_biddings
       @biddings = json_response(@market.select_biddings_with_key_words)
     end
